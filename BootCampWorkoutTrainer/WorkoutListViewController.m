@@ -81,7 +81,9 @@
     // Configure the cell...
     
     workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
-    cell.textLabel.text = workoutItem.workoutName;
+    //cell.textLabel.text = workoutItem.workoutName;
+    UILabel *workoutNameLabel = (UILabel *)[cell viewWithTag:100];
+    workoutNameLabel.text = workoutItem.workoutName;
     
     return cell;
 }

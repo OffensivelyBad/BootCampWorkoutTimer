@@ -13,5 +13,7 @@
 @synthesize workoutName;
 @synthesize workoutTime;
 @synthesize workoutIntensity;
+@synthesize exerciseArray;
+@synthesize exerciseTimeArray;
 
 @end

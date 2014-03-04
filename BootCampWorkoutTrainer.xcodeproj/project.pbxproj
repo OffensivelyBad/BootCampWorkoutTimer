@@ -23,6 +23,9 @@
 		29B8B97718B2F3D3005B29BA /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97618B2F3D3005B29BA /* NewWorkoutViewController.m */; };
 		29B8B97A18B2F451005B29BA /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97918B2F451005B29BA /* WorkoutListViewController.m */; };
 		29B8B98018B2F771005B29BA /* workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97F18B2F771005B29BA /* workout.m */; };
+		29B8B98A18BD9545005B29BA /* high_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98718BD9545005B29BA /* high_intensity.png */; };
+		29B8B98B18BD9545005B29BA /* light_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98818BD9545005B29BA /* light_intensity.png */; };
+		29B8B98C18BD9545005B29BA /* medium_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98918BD9545005B29BA /* medium_intensity.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		29B8B97918B2F451005B29BA /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
 		29B8B97E18B2F771005B29BA /* workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = workout.h; path = ../workout.h; sourceTree = "<group>"; };
 		29B8B97F18B2F771005B29BA /* workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = workout.m; path = ../workout.m; sourceTree = "<group>"; };
+		29B8B98718BD9545005B29BA /* high_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = high_intensity.png; sourceTree = "<group>"; };
+		29B8B98818BD9545005B29BA /* light_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_intensity.png; sourceTree = "<group>"; };
+		29B8B98918BD9545005B29BA /* medium_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medium_intensity.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,9 @@
 		29B8B94A18B2EEA4005B29BA /* BootCampWorkoutTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				29B8B98718BD9545005B29BA /* high_intensity.png */,
+				29B8B98818BD9545005B29BA /* light_intensity.png */,
+				29B8B98918BD9545005B29BA /* medium_intensity.png */,
 				29B8B97E18B2F771005B29BA /* workout.h */,
 				29B8B97F18B2F771005B29BA /* workout.m */,
 				29B8B95318B2EEA4005B29BA /* AppDelegate.h */,
@@ -238,8 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B8B97418B2EF76005B29BA /* Main.storyboard in Resources */,
+				29B8B98B18BD9545005B29BA /* light_intensity.png in Resources */,
+				29B8B98C18BD9545005B29BA /* medium_intensity.png in Resources */,
 				29B8B94F18B2EEA4005B29BA /* InfoPlist.strings in Resources */,
 				29B8B95718B2EEA4005B29BA /* Images.xcassets in Resources */,
+				29B8B98A18BD9545005B29BA /* high_intensity.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

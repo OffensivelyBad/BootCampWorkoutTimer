@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B27A6DDA-72A6-4EBA-A0FE-BB200D271DDD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BootCampWorkoutTrainer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F9DBD732-132A-44A1-9511-43861932EFFD</key>
+		<string>https://github.com/OffensivelyBad/BootCampWorkoutTimer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BootCampWorkoutTrainer.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F9DBD732-132A-44A1-9511-43861932EFFD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/OffensivelyBad/BootCampWorkoutTimer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F9DBD732-132A-44A1-9511-43861932EFFD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F9DBD732-132A-44A1-9511-43861932EFFD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BootCampWorkoutTrainer</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -13,5 +13,7 @@
 @property NSString *workoutName;
 @property NSTimeInterval workoutTime;
 @property NSInteger workoutIntensity;
+@property NSMutableArray *exerciseArray;
+@property NSMutableArray *exerciseTimeArray;
 
 @end
