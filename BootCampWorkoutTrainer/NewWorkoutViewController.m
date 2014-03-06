@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalWorkoutTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseNumberLabel;
+@property NSString *sliderValue;
 
 @end
 
@@ -32,6 +33,7 @@
 @synthesize workoutTimes;
 @synthesize totalWorkoutTime;
 @synthesize totalExercises;
+@synthesize sliderValue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,6 +54,9 @@
     intensities = [[NSMutableArray alloc] init];
     workoutTimes = [[NSMutableArray alloc] init];
     
+    //default the slider value
+    sliderValue = @"1";
+    
     minsArray = [[NSMutableArray alloc] init];
     secsArray = [[NSMutableArray alloc] init];
     NSString *stringValue = [[NSString alloc] init];
@@ -69,10 +74,16 @@
     
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[self view] endEditing:YES];
+}
+
 - (IBAction)sliderChanged:(id)sender
 {
     UISlider *slider = (UISlider *)sender;
     NSInteger val = lround(slider.value);
+    sliderValue = [NSString stringWithFormat:@"%i", val];
     NSLog(@"%i", val);
 }
 
@@ -140,15 +151,84 @@
     return (component == 0 || component == 2) ? 35.0f : 60.0f;
 }
 
+- (IBAction)addExercise:(id)sender
+{
+    if (self.workoutNameField.text.length > 0)
+    {
+        if (self.exerciseNameField.text.length > 0)
+        {
+            [exercises addObject:self.exerciseNameField.text];
+            [intensities addObject:self.sliderValue];
+            [workoutTimes addObject:[NSNumber numberWithInt:totalWorkoutTime]];
+            NSLog(@"Exercises: %@, intensities: %@, workoutTimes: %@",exercises, intensities, workoutTimes);
+    
+            [self.exerciseNameField setText:@""];
+        }
+        
+        else
+        {
+            [self emptyExerciseFieldAlert];
+        }
+    }
+    else
+    {
+        [self emptyWorkoutFieldAlert];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (sender != self.saveButton) return;
     if (self.workoutNameField.text.length > 0)
     {
+        //save the workout
+        
         self.addWorkout = [[workout alloc] init];
         self.addWorkout.workoutName = self.workoutNameField.text;
+        for (int i = 0; i < [exercises count]; i++)
+        {
+            [self.addWorkout.exerciseArray addObject:[exercises objectAtIndex:i]];
+            [self.addWorkout.exerciseIntensityArray addObject:[intensities objectAtIndex:i]];
+            [self.addWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
+        }
     }
     
 }
+
+- (void)emptyExerciseFieldAlert
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"What's the exercise?", nil)
+                                                    message:NSLocalizedString(@"Enter the exercise name", nil)
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Got it!", nil)
+                                          otherButtonTitles:nil];
+	[alert show];
+}
+
+- (void)emptyWorkoutFieldAlert
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"What do you want to call the workout?", nil)
+                                                    message:NSLocalizedString(@"Enter the workout name", nil)
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Got it!", nil)
+                                          otherButtonTitles:nil];
+	[alert show];
+}
+
+//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+//    if ([identifier isEqualToString:@"navigationSegue"]) {
+//        NSLog(@"Segue Blocked");
+//        //Put your validation code here and return YES or NO as needed
+//        if (self.workoutNameField.text.length > 0 && sender == self.saveButton)
+//        {
+//            return YES;
+//        }
+//        else {
+//            [self emptyWorkoutFieldAlert];
+//            return NO;
+//        }
+//    }
+//    return YES;
+//}
 
 @end

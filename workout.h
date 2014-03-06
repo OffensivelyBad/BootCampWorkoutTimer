@@ -11,9 +11,10 @@
 @interface workout : NSObject
 
 @property NSString *workoutName;
-@property NSTimeInterval workoutTime;
-@property NSInteger workoutIntensity;
+@property NSString *workoutTime;
+@property NSString *workoutIntensity;
 @property NSMutableArray *exerciseArray;
+@property NSMutableArray *exerciseIntensityArray;
 @property NSMutableArray *exerciseTimeArray;
 
 @end

@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" rowHeight="75" id="GtT-Ww-UaY" customClass="workoutCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListPrototypeCell" rowHeight="75" id="GtT-Ww-UaY">
                                 <rect key="frame" x="0.0" y="86" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GtT-Ww-UaY" id="23P-v8-rIC">
@@ -271,7 +271,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="OIJ-g5-rno"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2yY-3X-IMQ">
                             <connections>
-                                <segue destination="9cN-in-hBB" kind="modal" id="0M1-jE-hIG"/>
+                                <segue destination="9cN-in-hBB" kind="modal" identifier="navigationSegue" id="0M1-jE-hIG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -363,6 +363,9 @@
                                 <state key="normal" title="Add to Routine">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addExercise:" destination="ooq-ad-YSa" eventType="touchUpInside" id="9eS-ns-BY6"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kC8-ee-t92">
                                 <rect key="frame" x="0.0" y="302" width="320" height="162"/>
@@ -385,12 +388,12 @@
                     <navigationItem key="navigationItem" title="New Workout" id="g5R-aB-lvq">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wVw-t2-cTv">
                             <connections>
-                                <segue destination="5z1-xH-yw2" kind="unwind" unwindAction="unwindToList:" id="bI2-CL-rOs"/>
+                                <segue destination="5z1-xH-yw2" kind="unwind" unwindAction="unwindToList:" id="Aaj-OJ-7Bf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NSg-fz-P4q">
                             <connections>
-                                <segue destination="5z1-xH-yw2" kind="unwind" unwindAction="unwindToList:" id="WEN-M9-d0t"/>
+                                <segue destination="5z1-xH-yw2" kind="unwind" unwindAction="unwindToList:" id="1MF-fE-uQH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
