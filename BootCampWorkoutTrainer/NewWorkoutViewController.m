@@ -183,6 +183,14 @@
     {
         //save the workout
         
+        NSInteger times = 0;
+        NSInteger totalIntensity = 0;
+        NSInteger avgIntensity = 0;
+        
+//        times = 0;
+//        totalIntensity = 0;
+//        avgIntensity = 0;
+        
         self.addWorkout = [[workout alloc] init];
         self.addWorkout.workoutName = self.workoutNameField.text;
         for (int i = 0; i < [exercises count]; i++)
@@ -190,7 +198,16 @@
             [self.addWorkout.exerciseArray addObject:[exercises objectAtIndex:i]];
             [self.addWorkout.exerciseIntensityArray addObject:[intensities objectAtIndex:i]];
             [self.addWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
+            
+            times = times + [[workoutTimes objectAtIndex:i] integerValue];
+            totalIntensity = totalIntensity + [[intensities objectAtIndex:i] integerValue];
+            
+            NSLog(@"times %i intensity %i", times, totalIntensity);
         }
+        avgIntensity = totalIntensity / [intensities count];
+        
+        self.addWorkout.workoutTime = [NSString stringWithFormat:@"%i", times];
+        self.addWorkout.workoutIntensity = [NSString stringWithFormat:@"%i", avgIntensity];
     }
     
 }

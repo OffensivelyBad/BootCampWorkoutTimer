@@ -83,7 +83,9 @@
     workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
     //cell.textLabel.text = workoutItem.workoutName;
     UILabel *workoutNameLabel = (UILabel *)[cell viewWithTag:100];
+    UILabel *workoutTimeLabel = (UILabel *)[cell viewWithTag:101];
     workoutNameLabel.text = workoutItem.workoutName;
+    workoutTimeLabel.text = workoutItem.workoutTime;
     
     return cell;
 }
