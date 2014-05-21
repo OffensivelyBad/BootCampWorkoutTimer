@@ -9,6 +9,7 @@
 #import "WorkoutListViewController.h"
 #import "workout.h"
 #import "NewWorkoutViewController.h"
+#import "SelectedWorkoutViewController.h"
 
 @interface WorkoutListViewController ()
 
@@ -77,7 +78,10 @@
 {
     static NSString *CellIdentifier = @"ListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
+    if(cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
     
     workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
@@ -85,9 +89,24 @@
     UILabel *workoutNameLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *workoutTimeLabel = (UILabel *)[cell viewWithTag:101];
     workoutNameLabel.text = workoutItem.workoutName;
+    //workoutTimeLabel.text = [NSString stringWithFormat: @"%f",workoutItem.workoutTime];
     workoutTimeLabel.text = workoutItem.workoutTime;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView beginUpdates];
+    
+    if(editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.workouts removeObjectAtIndex:indexPath.row];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    [tableView endUpdates];
 }
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
@@ -97,6 +116,17 @@
     if (workoutItem != nil){
         [self.workouts addObject:workoutItem];
         [self.tableView reloadData];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"selectWorkout"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        SelectedWorkoutViewController *destViewController = segue.destinationViewController;
+        workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
+        destViewController.selectedWorkout = workoutItem;
     }
 }
 

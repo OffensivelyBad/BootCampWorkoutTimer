@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalExercisesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalWorkoutTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseNumberLabel;
 @property NSString *sliderValue;
 
 @end
@@ -31,9 +30,10 @@
 @synthesize exercises;
 @synthesize intensities;
 @synthesize workoutTimes;
-@synthesize totalWorkoutTime;
+@synthesize exerciseTime;
 @synthesize totalExercises;
 @synthesize sliderValue;
+@synthesize totalWorkoutTime;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,9 +53,14 @@
     exercises = [[NSMutableArray alloc] init];
     intensities = [[NSMutableArray alloc] init];
     workoutTimes = [[NSMutableArray alloc] init];
+    totalWorkoutTime = [[NSString alloc] init];
+
     
-    //default the slider value
+    //set defaults
     sliderValue = @"1";
+    self.totalExercisesLabel.text = @"0";
+    self.totalWorkoutTimeLabel.text = @"00:00:00";
+    totalExercises = 0;
     
     minsArray = [[NSMutableArray alloc] init];
     secsArray = [[NSMutableArray alloc] init];
@@ -66,7 +71,7 @@
         stringValue = [NSString stringWithFormat:@"%d", i];
         [minsArray addObject:stringValue];
         [secsArray addObject:stringValue];
-        totalWorkoutTime = 0;
+        exerciseTime = 0;
     }
     
     self.intensitySlider.minimumValue = 1;
@@ -83,8 +88,8 @@
 {
     UISlider *slider = (UISlider *)sender;
     NSInteger val = lround(slider.value);
-    sliderValue = [NSString stringWithFormat:@"%i", val];
-    NSLog(@"%i", val);
+    sliderValue = [NSString stringWithFormat:@"%li", (long)val];
+    NSLog(@"%li", (long)val);
 }
 
 - (void)didReceiveMemoryWarning
@@ -141,8 +146,8 @@
     selectedMinute = [minsArray objectAtIndex:minRow];
     selectedSecond = [secsArray objectAtIndex:secRow];
     
-    totalWorkoutTime = ([selectedMinute intValue] * 60) + [selectedSecond intValue];
-    NSLog(@"%i", totalWorkoutTime);
+    exerciseTime = ([selectedMinute intValue] * 60) + [selectedSecond intValue];
+    NSLog(@"%li", (long)exerciseTime);
     
 }
 
@@ -157,12 +162,24 @@
     {
         if (self.exerciseNameField.text.length > 0)
         {
+            
             [exercises addObject:self.exerciseNameField.text];
             [intensities addObject:self.sliderValue];
-            [workoutTimes addObject:[NSNumber numberWithInt:totalWorkoutTime]];
+            [workoutTimes addObject:[NSNumber numberWithLong:exerciseTime]];
             NSLog(@"Exercises: %@, intensities: %@, workoutTimes: %@",exercises, intensities, workoutTimes);
     
             [self.exerciseNameField setText:@""];
+            self.totalExercisesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[exercises count]];
+            int totalExerciseTimes = 0;
+            
+            for (NSNumber *n in workoutTimes)
+            {
+                totalExerciseTimes += [n intValue];
+            }
+            
+            
+            totalWorkoutTime = [self timeFormatted:totalExerciseTimes];
+            self.totalWorkoutTimeLabel.text = totalWorkoutTime;
         }
         
         else
@@ -183,13 +200,8 @@
     {
         //save the workout
         
-        NSInteger times = 0;
         NSInteger totalIntensity = 0;
         NSInteger avgIntensity = 0;
-        
-//        times = 0;
-//        totalIntensity = 0;
-//        avgIntensity = 0;
         
         self.addWorkout = [[workout alloc] init];
         self.addWorkout.workoutName = self.workoutNameField.text;
@@ -199,15 +211,21 @@
             [self.addWorkout.exerciseIntensityArray addObject:[intensities objectAtIndex:i]];
             [self.addWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
             
-            times = times + [[workoutTimes objectAtIndex:i] integerValue];
             totalIntensity = totalIntensity + [[intensities objectAtIndex:i] integerValue];
-            
-            NSLog(@"times %i intensity %i", times, totalIntensity);
+
         }
-        avgIntensity = totalIntensity / [intensities count];
         
-        self.addWorkout.workoutTime = [NSString stringWithFormat:@"%i", times];
-        self.addWorkout.workoutIntensity = [NSString stringWithFormat:@"%i", avgIntensity];
+        if ([intensities count] == 0)
+        {
+            avgIntensity = totalIntensity;
+        }
+        else
+        {
+            avgIntensity = totalIntensity / [intensities count];
+        }
+
+        self.addWorkout.workoutTime = totalWorkoutTime;
+        self.addWorkout.workoutIntensity = [NSString stringWithFormat:@"%li", (long)avgIntensity];
     }
     
 }
@@ -230,6 +248,16 @@
                                           cancelButtonTitle:NSLocalizedString(@"Got it!", nil)
                                           otherButtonTitles:nil];
 	[alert show];
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 //- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

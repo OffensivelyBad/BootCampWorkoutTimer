@@ -18,7 +18,8 @@
 @property NSMutableArray *exercises;
 @property NSMutableArray *intensities;
 @property NSMutableArray *workoutTimes;
-@property NSInteger totalWorkoutTime;
+@property NSInteger exerciseTime;
+@property NSString *totalWorkoutTime;
 @property NSInteger totalExercises;
 
 @end

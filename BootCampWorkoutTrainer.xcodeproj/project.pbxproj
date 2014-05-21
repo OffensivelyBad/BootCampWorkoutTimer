@@ -19,13 +19,14 @@
 		29B8B96018B2EEA4005B29BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B8B94818B2EEA4005B29BA /* UIKit.framework */; };
 		29B8B96818B2EEA4005B29BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B96618B2EEA4005B29BA /* InfoPlist.strings */; };
 		29B8B96A18B2EEA4005B29BA /* BootCampWorkoutTrainerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B96918B2EEA4005B29BA /* BootCampWorkoutTrainerTests.m */; };
-		29B8B97418B2EF76005B29BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B97318B2EF76005B29BA /* Main.storyboard */; };
 		29B8B97718B2F3D3005B29BA /* NewWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97618B2F3D3005B29BA /* NewWorkoutViewController.m */; };
 		29B8B97A18B2F451005B29BA /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97918B2F451005B29BA /* WorkoutListViewController.m */; };
 		29B8B98018B2F771005B29BA /* workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8B97F18B2F771005B29BA /* workout.m */; };
 		29B8B98A18BD9545005B29BA /* high_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98718BD9545005B29BA /* high_intensity.png */; };
 		29B8B98B18BD9545005B29BA /* light_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98818BD9545005B29BA /* light_intensity.png */; };
 		29B8B98C18BD9545005B29BA /* medium_intensity.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B8B98918BD9545005B29BA /* medium_intensity.png */; };
+		29DEF4E418D62A4D00916D3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29DEF4E318D62A4D00916D3E /* Main.storyboard */; };
+		715C6D3719076A1A00D31BFC /* SelectedWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C6D3619076A1A00D31BFC /* SelectedWorkoutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 		29B8B96518B2EEA4005B29BA /* BootCampWorkoutTrainerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BootCampWorkoutTrainerTests-Info.plist"; sourceTree = "<group>"; };
 		29B8B96718B2EEA4005B29BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B8B96918B2EEA4005B29BA /* BootCampWorkoutTrainerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BootCampWorkoutTrainerTests.m; sourceTree = "<group>"; };
-		29B8B97318B2EF76005B29BA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		29B8B97518B2F3D3005B29BA /* NewWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWorkoutViewController.h; sourceTree = "<group>"; };
 		29B8B97618B2F3D3005B29BA /* NewWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWorkoutViewController.m; sourceTree = "<group>"; };
 		29B8B97818B2F451005B29BA /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
@@ -65,6 +65,9 @@
 		29B8B98718BD9545005B29BA /* high_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = high_intensity.png; sourceTree = "<group>"; };
 		29B8B98818BD9545005B29BA /* light_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_intensity.png; sourceTree = "<group>"; };
 		29B8B98918BD9545005B29BA /* medium_intensity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medium_intensity.png; sourceTree = "<group>"; };
+		29DEF4E318D62A4D00916D3E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		715C6D3519076A1A00D31BFC /* SelectedWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedWorkoutViewController.h; sourceTree = "<group>"; };
+		715C6D3619076A1A00D31BFC /* SelectedWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedWorkoutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,11 +130,13 @@
 				29B8B98718BD9545005B29BA /* high_intensity.png */,
 				29B8B98818BD9545005B29BA /* light_intensity.png */,
 				29B8B98918BD9545005B29BA /* medium_intensity.png */,
+				29DEF4E318D62A4D00916D3E /* Main.storyboard */,
+				715C6D3519076A1A00D31BFC /* SelectedWorkoutViewController.h */,
+				715C6D3619076A1A00D31BFC /* SelectedWorkoutViewController.m */,
 				29B8B97E18B2F771005B29BA /* workout.h */,
 				29B8B97F18B2F771005B29BA /* workout.m */,
 				29B8B95318B2EEA4005B29BA /* AppDelegate.h */,
 				29B8B95418B2EEA4005B29BA /* AppDelegate.m */,
-				29B8B97318B2EF76005B29BA /* Main.storyboard */,
 				29B8B97818B2F451005B29BA /* WorkoutListViewController.h */,
 				29B8B97918B2F451005B29BA /* WorkoutListViewController.m */,
 				29B8B97518B2F3D3005B29BA /* NewWorkoutViewController.h */,
@@ -215,7 +220,7 @@
 		29B8B93918B2EEA3005B29BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Shawn Roller";
 				TargetAttributes = {
 					29B8B95B18B2EEA4005B29BA = {
@@ -246,10 +251,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B8B97418B2EF76005B29BA /* Main.storyboard in Resources */,
 				29B8B98B18BD9545005B29BA /* light_intensity.png in Resources */,
 				29B8B98C18BD9545005B29BA /* medium_intensity.png in Resources */,
 				29B8B94F18B2EEA4005B29BA /* InfoPlist.strings in Resources */,
+				29DEF4E418D62A4D00916D3E /* Main.storyboard in Resources */,
 				29B8B95718B2EEA4005B29BA /* Images.xcassets in Resources */,
 				29B8B98A18BD9545005B29BA /* high_intensity.png in Resources */,
 			);
@@ -273,6 +278,7 @@
 				29B8B98018B2F771005B29BA /* workout.m in Sources */,
 				29B8B97A18B2F451005B29BA /* WorkoutListViewController.m in Sources */,
 				29B8B95518B2EEA4005B29BA /* AppDelegate.m in Sources */,
+				715C6D3719076A1A00D31BFC /* SelectedWorkoutViewController.m in Sources */,
 				29B8B97718B2F3D3005B29BA /* NewWorkoutViewController.m in Sources */,
 				29B8B95118B2EEA4005B29BA /* main.m in Sources */,
 			);
@@ -320,7 +326,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -359,7 +364,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -417,7 +421,6 @@
 		29B8B97118B2EEA4005B29BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BootCampWorkoutTrainer.app/BootCampWorkoutTrainer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -440,7 +443,6 @@
 		29B8B97218B2EEA4005B29BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BootCampWorkoutTrainer.app/BootCampWorkoutTrainer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -475,6 +477,7 @@
 				29B8B96F18B2EEA4005B29BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		29B8B97018B2EEA4005B29BA /* Build configuration list for PBXNativeTarget "BootCampWorkoutTrainerTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +486,7 @@
 				29B8B97218B2EEA4005B29BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
