@@ -204,7 +204,13 @@
         NSInteger avgIntensity = 0;
         
         self.addWorkout = [[workout alloc] init];
+        self.addWorkout.exerciseArray = [[NSMutableArray alloc] init];
+        self.addWorkout.exerciseIntensityArray = [[NSMutableArray alloc] init];
+        self.addWorkout.exerciseTimeArray = [[NSMutableArray alloc] init];
         self.addWorkout.workoutName = self.workoutNameField.text;
+//        for (<#type *object#> in <#collection#>) {
+//            <#statements#>
+//        }
         for (int i = 0; i < [exercises count]; i++)
         {
             [self.addWorkout.exerciseArray addObject:[exercises objectAtIndex:i]];
@@ -212,7 +218,6 @@
             [self.addWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
             
             totalIntensity = totalIntensity + [[intensities objectAtIndex:i] integerValue];
-
         }
         
         if ([intensities count] == 0)

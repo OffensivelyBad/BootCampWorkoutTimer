@@ -15,7 +15,10 @@
 @implementation SelectedWorkoutViewController
 
 @synthesize selectedWorkout;
+@synthesize currentRound;
 @synthesize workoutNameLabel;
+@synthesize exerciseNameLabel;
+@synthesize roundNumberLabel;
 @synthesize timerLabel;
 
 int hours, minutes, seconds;
@@ -33,12 +36,19 @@ int secondsLeft;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //workout *selectedWorkout = [[workout alloc]init];
+    
+    currentRound = 0;
+    
     workoutNameLabel.text = selectedWorkout.workoutName;
-    //secondsLeft = [selectedWorkout.workoutTime intValue];
-    secondsLeft = 60;
+    secondsLeft = [selectedWorkout.exerciseTimeArray[currentRound] intValue];
+    
     running = false;
+    
+    [self setTime];
+    
+    exerciseNameLabel.text = [NSString stringWithFormat:@"%@",[selectedWorkout.exerciseArray objectAtIndex:currentRound]];
+    roundNumberLabel.text = [NSString stringWithFormat:@"%i", currentRound + 1];
+    
     NSLog(@"%i",secondsLeft);
 }
 
@@ -50,13 +60,14 @@ int secondsLeft;
 
 - (void)updateTimer:(NSTimer *)theTimer
 {
-    if (secondsLeft > 0)
+    if (secondsLeft > 0 && running ==true)
     {
         secondsLeft --;
-        hours = secondsLeft / 3600;
-        minutes = (secondsLeft % 3600) / 60;
-        seconds = (secondsLeft % 3600) % 60;
-        timerLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hours,minutes,seconds];
+        [self setTime];
+    }
+    else
+    {
+        [self updateRound];
     }
 }
 
@@ -64,9 +75,36 @@ int secondsLeft;
 {
     if (running == true)
     {
-        //secondsLeft = hours = minutes = seconds = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:true];
         NSLog(@"%i",secondsLeft);
+    }
+    else
+    {
+        [timer invalidate];
+        timer = nil;
+    }
+}
+
+- (void)setTime
+{
+    hours = secondsLeft / 3600;
+    minutes = (secondsLeft % 3600) / 60;
+    seconds = (secondsLeft % 3600) % 60;
+    timerLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hours,minutes,seconds];
+}
+
+- (void)updateRound
+{
+    if (currentRound +1 < [selectedWorkout.exerciseArray count])
+    {
+        currentRound ++;
+        [timer invalidate];
+        timer = nil;
+        secondsLeft = [selectedWorkout.exerciseTimeArray[currentRound] intValue];
+        [self setTime];
+        exerciseNameLabel.text = [NSString stringWithFormat:@"%@",[selectedWorkout.exerciseArray objectAtIndex:currentRound]];
+        roundNumberLabel.text = [NSString stringWithFormat:@"%i", currentRound + 1];
+        [self countdownTimer];
     }
 }
 
@@ -82,6 +120,7 @@ int secondsLeft;
     {
         running = false;
         [sender setTitle:@"START" forState:UIControlStateNormal];
+        [self countdownTimer];
     }
 }
 

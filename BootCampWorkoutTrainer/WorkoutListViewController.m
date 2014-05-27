@@ -30,15 +30,31 @@
 
 - (void)loadInitialData
 {
-//    workout *item1 = [[workout alloc] init];
-//    item1.workoutName = @"Mudderling";
-//    [self.workouts addObject:item1];
-//    workout *item2 = [[workout alloc] init];
-//    item2.workoutName = @"Mudder";
-//    [self.workouts addObject:item2];
-//    workout *item3 = [[workout alloc] init];
-//    item3.workoutName = @"Tough Mudder";
-//    [self.workouts addObject:item3];
+    workout *item1 = [[workout alloc] init];
+    item1.exerciseArray = [[NSMutableArray alloc] init];
+    item1.exerciseIntensityArray = [[NSMutableArray alloc]init];
+    item1.exerciseTimeArray = [[NSMutableArray alloc]init];
+    item1.workoutName = @"Mudderling";
+    item1.workoutTime = @"02:00:00";
+    item1.workoutIntensity = @"50";
+    workout *item2 = [[workout alloc] init];
+    item2.exerciseArray = [[NSMutableArray alloc] init];
+    item2.exerciseIntensityArray = [[NSMutableArray alloc]init];
+    item2.exerciseTimeArray = [[NSMutableArray alloc]init];
+    item2.workoutName = @"Tough Mudder";
+    item2.workoutTime = @"15:00:00";
+    item2.workoutIntensity = @"99";
+    for (int i = 10; i < 60; i++)
+    {
+        [item1.exerciseArray addObject:[NSString stringWithFormat:@"Exercise %lu",(long unsigned) i]];
+        [item1.exerciseIntensityArray addObject:[NSNumber numberWithInt:i]];
+        [item1.exerciseTimeArray addObject:[NSNumber numberWithInt:i]];
+        [item2.exerciseArray addObject:[NSString stringWithFormat:@"%lu",(long unsigned) i]];
+        [item2.exerciseIntensityArray addObject:[NSNumber numberWithInt:i]];
+        [item2.exerciseTimeArray addObject:[NSNumber numberWithInt:i]];
+    }
+    [self.workouts addObject:item1];
+    [self.workouts addObject:item2];
 }
 
 - (void)viewDidLoad
@@ -51,7 +67,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.workouts = [[NSMutableArray alloc] init];
-    //[self loadInitialData];
+    [self loadInitialData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +107,7 @@
     workoutNameLabel.text = workoutItem.workoutName;
     //workoutTimeLabel.text = [NSString stringWithFormat: @"%f",workoutItem.workoutTime];
     workoutTimeLabel.text = workoutItem.workoutTime;
+    //NSLog(@"%@",workoutItem.exerciseTimeArray[0]);
     
     return cell;
 }

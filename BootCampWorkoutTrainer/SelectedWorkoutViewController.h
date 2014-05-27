@@ -17,10 +17,15 @@
 }
 
 @property workout *selectedWorkout;
+@property int currentRound;
 @property IBOutlet UILabel *workoutNameLabel;
+@property IBOutlet UILabel *exerciseNameLabel;
+@property IBOutlet UILabel *roundNumberLabel;
 @property (nonatomic, retain) UILabel *timerLabel;
 - (void)updateTimer:(NSTimer *)theTimer;
 - (void)countdownTimer;
+- (void)updateRound;
+- (void)setTime;
 - (IBAction)onButton:(UIButton *)sender;
 
 @end
