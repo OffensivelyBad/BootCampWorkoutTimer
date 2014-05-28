@@ -11,5 +11,6 @@
 @interface WorkoutListViewController : UITableViewController
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+- (IBAction)enterEditMode:(id)sender;
 
 @end

@@ -68,6 +68,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.workouts = [[NSMutableArray alloc] init];
     [self loadInitialData];
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +90,31 @@
     // Return the number of rows in the section.
     return [self.workouts count];
 }
+
+
+
+//test edit mode
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(IBAction)enterEditMode:(id)sender
+{
+    if([self.tableView isEditing])
+    {
+        [self.tableView setEditing:NO animated:YES];
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
+
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -136,16 +162,42 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSLog(@"did select row");
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//    NSString *segueName = nil;
+//    if([cell isEditing] == YES)
+//    {
+//        segueName = @"selectWorkout";
+//    }
+//    else
+//    {
+//        segueName = @"selectWorkout";
+//        NSLog(@"selectworkout");
+//    }
+//    [self performSegueWithIdentifier: segueName sender:indexPath];
+    
+    [self performSegueWithIdentifier:@"selectWorkout" sender:indexPath];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"selectWorkout"])
     {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
         SelectedWorkoutViewController *destViewController = segue.destinationViewController;
         workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
         destViewController.selectedWorkout = workoutItem;
     }
+    else if([segue.identifier isEqualToString:@"editWorkout"])
+    {
+        
+    }
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -199,3 +251,4 @@
  */
 
 @end
+
