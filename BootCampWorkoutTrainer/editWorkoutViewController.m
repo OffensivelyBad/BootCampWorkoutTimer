@@ -10,9 +10,32 @@
 
 @interface editWorkoutViewController ()
 
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UITextField *workoutNameField;
+@property (weak, nonatomic) IBOutlet UITextField *exerciseNameField;
+@property (weak, nonatomic) IBOutlet UILabel *totalExercisesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalWorkoutTimeLabel;
+@property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
+@property (weak, nonatomic) IBOutlet UIStepper *exerciseStepper;
+@property NSString *sliderValue;
+
 @end
 
 @implementation editWorkoutViewController
+
+@synthesize minsArray;
+@synthesize secsArray;
+@synthesize workoutName;
+@synthesize exercises;
+@synthesize intensities;
+@synthesize workoutTimes;
+@synthesize exerciseTime;
+@synthesize totalExercises;
+@synthesize sliderValue;
+@synthesize totalWorkoutTime;
+
+@synthesize editWorkout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

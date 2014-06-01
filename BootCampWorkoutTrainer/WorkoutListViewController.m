@@ -10,6 +10,7 @@
 #import "workout.h"
 #import "NewWorkoutViewController.h"
 #import "SelectedWorkoutViewController.h"
+#import "editWorkoutViewController.h"
 
 @interface WorkoutListViewController ()
 
@@ -162,23 +163,19 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"did select row");
-//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//    NSString *segueName = nil;
-//    if([cell isEditing] == YES)
-//    {
-//        segueName = @"selectWorkout";
-//    }
-//    else
-//    {
-//        segueName = @"selectWorkout";
-//        NSLog(@"selectworkout");
-//    }
-//    [self performSegueWithIdentifier: segueName sender:indexPath];
-    
-    [self performSegueWithIdentifier:@"selectWorkout" sender:indexPath];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *segueName = nil;
+    if([cell isEditing] == YES)
+    {
+        segueName = @"editWorkout";
+    }
+    else
+    {
+        segueName = @"selectWorkout";
+    }
+    [self performSegueWithIdentifier: segueName sender:indexPath];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -193,7 +190,10 @@
     }
     else if([segue.identifier isEqualToString:@"editWorkout"])
     {
-        
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        editWorkoutViewController *destViewController = segue.destinationViewController;
+        workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
+        destViewController.editWorkout = workoutItem;
     }
 }
 
