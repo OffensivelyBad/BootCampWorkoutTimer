@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2903A42919574027004CBAC9 /* cowbell.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 2903A42819574027004CBAC9 /* cowbell.WAV */; };
 		29B8B94518B2EEA4005B29BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B8B94418B2EEA4005B29BA /* Foundation.framework */; };
 		29B8B94718B2EEA4005B29BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B8B94618B2EEA4005B29BA /* CoreGraphics.framework */; };
 		29B8B94918B2EEA4005B29BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B8B94818B2EEA4005B29BA /* UIKit.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2903A42819574027004CBAC9 /* cowbell.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cowbell.WAV; sourceTree = "<group>"; };
 		29B8B94118B2EEA4005B29BA /* BootCampWorkoutTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootCampWorkoutTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B8B94418B2EEA4005B29BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		29B8B94618B2EEA4005B29BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +132,7 @@
 		29B8B94A18B2EEA4005B29BA /* BootCampWorkoutTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				2903A42819574027004CBAC9 /* cowbell.WAV */,
 				29B8B98718BD9545005B29BA /* high_intensity.png */,
 				29B8B98818BD9545005B29BA /* light_intensity.png */,
 				29B8B98918BD9545005B29BA /* medium_intensity.png */,
@@ -259,6 +262,7 @@
 				29B8B98B18BD9545005B29BA /* light_intensity.png in Resources */,
 				29B8B98C18BD9545005B29BA /* medium_intensity.png in Resources */,
 				29B8B94F18B2EEA4005B29BA /* InfoPlist.strings in Resources */,
+				2903A42919574027004CBAC9 /* cowbell.WAV in Resources */,
 				29DEF4E418D62A4D00916D3E /* Main.storyboard in Resources */,
 				29B8B95718B2EEA4005B29BA /* Images.xcassets in Resources */,
 				29B8B98A18BD9545005B29BA /* high_intensity.png in Resources */,

@@ -7,6 +7,7 @@
 //
 
 #import "SelectedWorkoutViewController.h"
+#include <AudioToolbox/AudioToolbox.h>
 
 @interface SelectedWorkoutViewController ()
 
@@ -58,6 +59,15 @@ int secondsLeft;
     // Dispose of any resources that can be recreated.
 }
 
+-(void) playSound {
+    NSString *doneSoundPath = [[NSBundle mainBundle] pathForResource:@"cowbell" ofType:@"WAV"];
+    SystemSoundID doneSoundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: doneSoundPath], &doneSoundID);
+    AudioServicesPlaySystemSound (doneSoundID);
+    //[soundPath release];
+//    NSLog(@"soundpath retain count: %lu", (unsigned long)[soundPath retainCount]);
+}
+
 - (void)updateTimer:(NSTimer *)theTimer
 {
     if (secondsLeft > 0 && running ==true)
@@ -104,6 +114,7 @@ int secondsLeft;
         [self setTime];
         exerciseNameLabel.text = [NSString stringWithFormat:@"%@",[selectedWorkout.exerciseArray objectAtIndex:currentRound]];
         roundNumberLabel.text = [NSString stringWithFormat:@"%i", currentRound + 1];
+        [self playSound];
         [self countdownTimer];
     }
 }

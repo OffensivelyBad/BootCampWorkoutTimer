@@ -25,6 +25,7 @@
 @property int currentExercise;
 @property NSInteger workoutIndexRow;
 - (void)selectExercise;
+- (void)saveExercise;
 - (IBAction)stepperValueChanged:(id)sender;
 
 @end

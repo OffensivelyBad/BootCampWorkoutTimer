@@ -114,13 +114,71 @@
     [self.pickerView selectRow:minutes inComponent:0 animated:YES];
     [self.pickerView selectRow:seconds inComponent:2 animated:YES];
     self.exerciseStepper.maximumValue = [self.exercises count] - 1;
+    self.exerciseTime = [self.workoutTimes[currentExercise] integerValue];
+}
+
+- (void)saveExercise
+{
+    NSString *newExerciseName = self.exercises[currentExercise];
+    NSString *newIntensity = [NSString stringWithFormat:@"%li", (long unsigned)self.intensitySlider.value];
+    NSString *newExerciseTime = [NSString stringWithFormat:@"%ld", (long)self.exerciseTime];
     
-    NSLog(@"maximum stepper value: %f",self.exerciseStepper.maximumValue);
-    NSLog(@"number of exercises: %lu",(unsigned long)[self.exercises count]);
+    self.editWorkout.workoutName = self.workoutNameField.text;
+    [self.editWorkout.exerciseArray replaceObjectAtIndex:currentExercise withObject:newExerciseName];
+    [self.editWorkout.exerciseIntensityArray replaceObjectAtIndex:currentExercise withObject:newIntensity];
+    [self.editWorkout.exerciseTimeArray replaceObjectAtIndex:currentExercise withObject:newExerciseTime];
+    NSInteger newExerciseTotal = [self.editWorkout.exerciseArray count];
+    
+    self.totalExercisesLabel.text = [NSString stringWithFormat:@"%li", (unsigned long) newExerciseTotal];
+    
+    int totalExerciseTimes = 0;
+    
+    for (NSNumber *n in self.editWorkout.exerciseTimeArray)
+    {
+        totalExerciseTimes += [n intValue];
+    }
+
+    totalWorkoutTime = [self timeFormatted:totalExerciseTimes];
+    self.totalWorkoutTimeLabel.text = totalWorkoutTime;
+    self.editWorkout.workoutTime = totalWorkoutTime;
+    
+    NSInteger totalIntensity = 0;
+    NSInteger avgIntensity = 0;
+    
+    for (int i = 0; i < [self.editWorkout.exerciseArray count]; i++)
+    {
+//        [self.editWorkout.exerciseArray addObject:[exercises objectAtIndex:i]];
+//        [self.editWorkout.exerciseIntensityArray addObject:[intensities objectAtIndex:i]];
+//        [self.editWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
+        
+        totalIntensity = totalIntensity + [[self.editWorkout.exerciseIntensityArray objectAtIndex:i] integerValue];
+    }
+    
+    if ([self.editWorkout.exerciseIntensityArray count] == 0)
+    {
+        avgIntensity = totalIntensity;
+    }
+    else
+    {
+        avgIntensity = totalIntensity / [self.editWorkout.exerciseIntensityArray count];
+    }
+    self.editWorkout.workoutIntensity = [NSString stringWithFormat:@"%li", (long)avgIntensity];
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender
 {
+    [self saveExercise];
+    
     currentExercise = sender.value;
     
     [self selectExercise];
@@ -208,7 +266,7 @@
 //        self.editWorkout.exerciseArray = [[NSMutableArray alloc] init];
 //        self.editWorkout.exerciseIntensityArray = [[NSMutableArray alloc] init];
 //        self.editWorkout.exerciseTimeArray = [[NSMutableArray alloc] init];
-        self.editWorkout.workoutName = self.workoutNameField.text;
+//        self.editWorkout.workoutName = self.workoutNameField.text;
 //        
 //        for (int i = 0; i < [exercises count]; i++)
 //        {

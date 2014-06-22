@@ -92,8 +92,6 @@
     return [self.workouts count];
 }
 
-
-
 //test edit mode
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "workout.h"
+#include <AudioToolbox/AudioToolbox.h>
 
 @interface SelectedWorkoutViewController : UIViewController
 {
     NSTimer *timer;
     BOOL running;
     IBOutlet UILabel *timerLabel;
+    //SystemSoundID doneSound;
 }
 
 @property workout *selectedWorkout;
