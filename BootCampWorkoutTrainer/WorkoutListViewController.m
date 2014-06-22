@@ -163,6 +163,17 @@
     }
 }
 
+- (IBAction)unwindToEditList:(UIStoryboardSegue *)segue
+{
+    editWorkoutViewController *source = [segue sourceViewController];
+    workout *workoutItem = source.editWorkout;
+    NSInteger workoutIndexRow = source.workoutIndexRow;
+    if (workoutItem != nil){
+        [self.workouts replaceObjectAtIndex:workoutIndexRow withObject:workoutItem];
+        [self.tableView reloadData];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -193,7 +204,9 @@
         NSIndexPath *indexPath = (NSIndexPath *)sender;
         editWorkoutViewController *destViewController = segue.destinationViewController;
         workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
+        NSInteger workoutIndexRow = indexPath.row;
         destViewController.editWorkout = workoutItem;
+        destViewController.workoutIndexRow = workoutIndexRow;
     }
 }
 

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalWorkoutTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *intensitySlider;
 @property (weak, nonatomic) IBOutlet UIStepper *exerciseStepper;
+
 @property NSString *sliderValue;
 
 @end
@@ -35,6 +36,8 @@
 @synthesize sliderValue;
 @synthesize totalWorkoutTime;
 @synthesize workoutIntensity;
+@synthesize currentExercise;
+@synthesize workoutIndexRow;
 
 @synthesize editWorkout;
 
@@ -59,17 +62,17 @@
     self.workoutTimes = editWorkout.exerciseTimeArray;
     self.totalWorkoutTime = editWorkout.workoutTime;
     self.workoutIntensity = editWorkout.workoutIntensity;
+    self.exerciseStepper.maximumValue = [self.exercises count];
+    
+    self.currentExercise = 0;
     
     self.workoutNameField.text = self.workoutName;
-    self.exerciseNameField.text = self.exercises[0];
-    self.totalExercisesLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[self.exercises count]];
-    self.totalWorkoutTimeLabel.text = self.totalWorkoutTime;
-    self.sliderValue = self.intensities[0];
-    
-    NSLog(@"%@",self.intensities[0]);
     
     //default the picker
     NSString *stringValue = [[NSString alloc] init];
+    
+    minsArray = [[NSMutableArray alloc] init];
+    secsArray = [[NSMutableArray alloc] init];
     
     for (int i=0; i<=60; i++)
     {
@@ -82,6 +85,8 @@
     self.intensitySlider.minimumValue = 1;
     self.intensitySlider.maximumValue = 99;
     
+    [self selectExercise];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +98,34 @@
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [[self view] endEditing:YES];
+}
+
+- (void)selectExercise
+{
+    self.exerciseNameField.text = self.exercises[currentExercise];
+    self.totalExercisesLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[self.exercises count]];
+    self.totalWorkoutTimeLabel.text = self.totalWorkoutTime;
+    self.sliderValue = self.intensities[currentExercise];
+    self.intensitySlider.value = [self.intensities[currentExercise] intValue];
+    int currentExerciseTime = [self.workoutTimes[currentExercise] intValue];
+    int seconds = currentExerciseTime % 60;
+    int minutes = (currentExerciseTime - seconds) / 60;
+    //set picker for minutes and seconds
+    [self.pickerView selectRow:minutes inComponent:0 animated:YES];
+    [self.pickerView selectRow:seconds inComponent:2 animated:YES];
+    self.exerciseStepper.maximumValue = [self.exercises count] - 1;
+    
+    NSLog(@"maximum stepper value: %f",self.exerciseStepper.maximumValue);
+    NSLog(@"number of exercises: %lu",(unsigned long)[self.exercises count]);
+}
+
+- (IBAction)stepperValueChanged:(UIStepper *)sender
+{
+    currentExercise = sender.value;
+    
+    [self selectExercise];
+    
+    NSLog(@"Exercise: %02d", currentExercise);
 }
 
 - (IBAction)sliderChanged:(id)sender
@@ -160,6 +193,47 @@
 {
     return (component == 0 || component == 2) ? 35.0f : 60.0f;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (sender != self.saveButton) return;
+    if (self.workoutNameField.text.length > 0)
+    {
+//        //save the workout
+//        
+//        NSInteger totalIntensity = 0;
+//        NSInteger avgIntensity = 0;
+//        
+//        self.editWorkout = [[workout alloc] init];
+//        self.editWorkout.exerciseArray = [[NSMutableArray alloc] init];
+//        self.editWorkout.exerciseIntensityArray = [[NSMutableArray alloc] init];
+//        self.editWorkout.exerciseTimeArray = [[NSMutableArray alloc] init];
+        self.editWorkout.workoutName = self.workoutNameField.text;
+//        
+//        for (int i = 0; i < [exercises count]; i++)
+//        {
+//            [self.editWorkout.exerciseArray addObject:[exercises objectAtIndex:i]];
+//            [self.editWorkout.exerciseIntensityArray addObject:[intensities objectAtIndex:i]];
+//            [self.editWorkout.exerciseTimeArray addObject:[workoutTimes objectAtIndex:i]];
+//            
+//            totalIntensity = totalIntensity + [[intensities objectAtIndex:i] integerValue];
+//        }
+//        
+//        if ([intensities count] == 0)
+//        {
+//            avgIntensity = totalIntensity;
+//        }
+//        else
+//        {
+//            avgIntensity = totalIntensity / [intensities count];
+//        }
+//        
+//        self.editWorkout.workoutTime = totalWorkoutTime;
+//        self.editWorkout.workoutIntensity = [NSString stringWithFormat:@"%li", (long)avgIntensity];
+    }
+    
+}
+
 
 /*
 #pragma mark - Navigation

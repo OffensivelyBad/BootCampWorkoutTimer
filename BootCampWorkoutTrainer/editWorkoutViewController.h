@@ -22,5 +22,9 @@
 @property NSString *totalWorkoutTime;
 @property NSInteger totalExercises;
 @property NSString *workoutIntensity;
+@property int currentExercise;
+@property NSInteger workoutIndexRow;
+- (void)selectExercise;
+- (IBAction)stepperValueChanged:(id)sender;
 
 @end
