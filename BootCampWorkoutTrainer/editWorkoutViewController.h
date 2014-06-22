@@ -21,5 +21,6 @@
 @property NSInteger exerciseTime;
 @property NSString *totalWorkoutTime;
 @property NSInteger totalExercises;
+@property NSString *workoutIntensity;
 
 @end
