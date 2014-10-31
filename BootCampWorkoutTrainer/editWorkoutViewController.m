@@ -10,18 +10,40 @@
 
 @interface editWorkoutViewController ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+
 @end
 
 @implementation editWorkoutViewController
 
+@synthesize minsArray;
+@synthesize secsArray;
+@synthesize workoutName;
+@synthesize exercises;
+@synthesize intensities;
+@synthesize workoutTimes;
+@synthesize exerciseTime;
+@synthesize totalExercises;
+@synthesize totalWorkoutTime;
+@synthesize workoutIntensity;
+@synthesize currentExercise;
+@synthesize workoutIndexRow;
+@synthesize editWorkout;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = editWorkout.workoutName;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (sender != self.saveButton) return;    
 }
 
 /*

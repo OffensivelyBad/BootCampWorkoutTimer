@@ -11,6 +11,7 @@
 #import "NewWorkoutViewController.h"
 #import "SelectedWorkoutViewController.h"
 #import "editExerciseViewController.h"
+#import "editWorkoutViewController.h"
 
 @interface WorkoutListViewController ()
 
@@ -125,9 +126,6 @@
     }
 }
 
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ListPrototypeCell";
@@ -178,7 +176,7 @@
 
 - (IBAction)unwindToEditList:(UIStoryboardSegue *)segue
 {
-    editExerciseViewController *source = [segue sourceViewController];
+    editWorkoutViewController *source = [segue sourceViewController];
     workout *workoutItem = source.editWorkout;
     NSInteger workoutIndexRow = source.workoutIndexRow;
     if (workoutItem != nil){
@@ -215,7 +213,7 @@
     else if([segue.identifier isEqualToString:@"editWorkout"])
     {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
-        editExerciseViewController *destViewController = segue.destinationViewController;
+        editWorkoutViewController *destViewController = segue.destinationViewController;
         workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
         NSInteger workoutIndexRow = indexPath.row;
         destViewController.editWorkout = workoutItem;

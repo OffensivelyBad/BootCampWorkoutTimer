@@ -148,14 +148,14 @@
 				29B8B95418B2EEA4005B29BA /* AppDelegate.m */,
 				29B8B97818B2F451005B29BA /* WorkoutListViewController.h */,
 				29B8B97918B2F451005B29BA /* WorkoutListViewController.m */,
-				71392ED51934CC020018FEB6 /* editExerciseViewController.h */,
-				71392ED61934CC020018FEB6 /* editExerciseViewController.m */,
 				29B8B97518B2F3D3005B29BA /* NewWorkoutViewController.h */,
 				29B8B97618B2F3D3005B29BA /* NewWorkoutViewController.m */,
-				29B8B95618B2EEA4005B29BA /* Images.xcassets */,
-				29B8B94B18B2EEA4005B29BA /* Supporting Files */,
+				71392ED51934CC020018FEB6 /* editExerciseViewController.h */,
+				71392ED61934CC020018FEB6 /* editExerciseViewController.m */,
 				71ADA0901A041558008C14C7 /* editWorkoutViewController.h */,
 				71ADA0911A041558008C14C7 /* editWorkoutViewController.m */,
+				29B8B95618B2EEA4005B29BA /* Images.xcassets */,
+				29B8B94B18B2EEA4005B29BA /* Supporting Files */,
 			);
 			path = BootCampWorkoutTrainer;
 			sourceTree = "<group>";

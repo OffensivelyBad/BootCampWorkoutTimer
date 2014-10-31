@@ -64,7 +64,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="dTI-zL-M2e" kind="push" identifier="selectWorkout" id="Q6Z-ju-5AU"/>
-                        <segue destination="28e-aZ-k35" kind="push" identifier="editWorkout" id="cQ1-bg-RD9"/>
+                        <segue destination="EnM-GQ-qdG" kind="push" identifier="editWorkout" id="RW5-rO-Iif"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LB3-Gr-qQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="-924" y="765"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Edit Workout View Controller-->
         <scene sceneID="X36-3I-C7M">
             <objects>
-                <tableViewController id="EnM-GQ-qdG" sceneMemberID="viewController">
+                <tableViewController id="EnM-GQ-qdG" customClass="editWorkoutViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ipe-M4-H8F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,9 +154,21 @@
                             <outlet property="delegate" destination="EnM-GQ-qdG" id="hnf-Mf-AJL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="28N-sI-VMf"/>
+                    <navigationItem key="navigationItem" id="28N-sI-VMf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="geS-xr-gVv">
+                            <connections>
+                                <segue destination="hvp-hr-NX9" kind="unwind" unwindAction="unwindToEditList:" id="Itv-ob-lj7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="qqQ-jX-6RD">
+                            <connections>
+                                <segue destination="hvp-hr-NX9" kind="unwind" unwindAction="unwindToEditList:" id="i1S-1F-i80"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbl-s4-GaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hvp-hr-NX9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-164" y="765"/>
         </scene>
@@ -361,16 +373,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="RXP-F3-5yG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I5E-NP-maF">
-                            <connections>
-                                <segue destination="VdW-dk-1rs" kind="unwind" unwindAction="unwindToEditList:" id="pud-rJ-t0x"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MuO-2D-5B0">
-                            <connections>
-                                <segue destination="VdW-dk-1rs" kind="unwind" unwindAction="unwindToEditList:" id="RqS-z8-UKz"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I5E-NP-maF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MuO-2D-5B0"/>
                     </navigationItem>
                     <connections>
                         <outlet property="exerciseNameField" destination="ge3-di-brI" id="EFN-Yk-mBB"/>
@@ -384,7 +388,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxY-L3-Le5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="VdW-dk-1rs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="564" y="765"/>
         </scene>
@@ -467,6 +470,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cQ1-bg-RD9"/>
+        <segue reference="RW5-rO-Iif"/>
     </inferredMetricsTieBreakers>
 </document>
