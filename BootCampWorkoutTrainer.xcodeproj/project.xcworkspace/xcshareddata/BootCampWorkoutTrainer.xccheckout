@@ -10,29 +10,29 @@
 	<string>BootCampWorkoutTrainer</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F9DBD732-132A-44A1-9511-43861932EFFD</key>
+		<key>2E0DD20634B22D8638175EF0DD43EB1D00B06BF5</key>
 		<string>https://github.com/OffensivelyBad/BootCampWorkoutTimer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BootCampWorkoutTrainer.xcodeproj/project.xcworkspace</string>
+	<string>BootCampWorkoutTrainer.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F9DBD732-132A-44A1-9511-43861932EFFD</key>
+		<key>2E0DD20634B22D8638175EF0DD43EB1D00B06BF5</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/OffensivelyBad/BootCampWorkoutTimer.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F9DBD732-132A-44A1-9511-43861932EFFD</string>
+	<string>2E0DD20634B22D8638175EF0DD43EB1D00B06BF5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F9DBD732-132A-44A1-9511-43861932EFFD</string>
+			<string>2E0DD20634B22D8638175EF0DD43EB1D00B06BF5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BootCampWorkoutTrainer</string>
 		</dict>
