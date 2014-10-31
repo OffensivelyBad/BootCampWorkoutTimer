@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Shawn Roller. All rights reserved.
 //
 
-#import "editWorkoutViewController.h"
+#import "editExerciseViewController.h"
 
-@interface editWorkoutViewController ()
+@interface editExerciseViewController ()
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation editWorkoutViewController
+@implementation editExerciseViewController
 
 @synthesize minsArray;
 @synthesize secsArray;

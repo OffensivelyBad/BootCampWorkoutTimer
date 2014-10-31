@@ -10,7 +10,7 @@
 #import "workout.h"
 #import "NewWorkoutViewController.h"
 #import "SelectedWorkoutViewController.h"
-#import "editWorkoutViewController.h"
+#import "editExerciseViewController.h"
 
 @interface WorkoutListViewController ()
 
@@ -98,6 +98,19 @@
     return YES;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    workout *workoutToMove = self.workouts[sourceIndexPath.row];
+    [self.workouts removeObjectAtIndex:sourceIndexPath.row];
+    [self.workouts insertObject:workoutToMove atIndex:destinationIndexPath.row];
+    
+}
+
 -(IBAction)enterEditMode:(id)sender
 {
     if([self.tableView isEditing])
@@ -119,20 +132,22 @@
 {
     static NSString *CellIdentifier = @"ListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
+    
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
     
     workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
-    //cell.textLabel.text = workoutItem.workoutName;
     UILabel *workoutNameLabel = (UILabel *)[cell viewWithTag:100];
     UILabel *workoutTimeLabel = (UILabel *)[cell viewWithTag:101];
+    UIImageView *workoutImage = (UIImageView *)[cell viewWithTag:102];
     workoutNameLabel.text = workoutItem.workoutName;
-    //workoutTimeLabel.text = [NSString stringWithFormat: @"%f",workoutItem.workoutTime];
     workoutTimeLabel.text = workoutItem.workoutTime;
-    //NSLog(@"%@",workoutItem.exerciseTimeArray[0]);
+    int cellIntensity = [workoutItem.workoutIntensity intValue];
+    if (cellIntensity < 100 && cellIntensity > 66){ workoutImage.image = [UIImage imageNamed:@"high_intensity.png"];}
+    else if (cellIntensity < 67 && cellIntensity > 33){ workoutImage.image = [UIImage imageNamed:@"medium_intensity.png"];}
+    else if (cellIntensity < 34 && cellIntensity > 0){ workoutImage.image = [UIImage imageNamed:@"light_intensity.png"];};
     
     return cell;
 }
@@ -163,7 +178,7 @@
 
 - (IBAction)unwindToEditList:(UIStoryboardSegue *)segue
 {
-    editWorkoutViewController *source = [segue sourceViewController];
+    editExerciseViewController *source = [segue sourceViewController];
     workout *workoutItem = source.editWorkout;
     NSInteger workoutIndexRow = source.workoutIndexRow;
     if (workoutItem != nil){
@@ -200,7 +215,7 @@
     else if([segue.identifier isEqualToString:@"editWorkout"])
     {
         NSIndexPath *indexPath = (NSIndexPath *)sender;
-        editWorkoutViewController *destViewController = segue.destinationViewController;
+        editExerciseViewController *destViewController = segue.destinationViewController;
         workout *workoutItem = [self.workouts objectAtIndex:indexPath.row];
         NSInteger workoutIndexRow = indexPath.row;
         destViewController.editWorkout = workoutItem;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "workout.h"
 
-@interface editWorkoutViewController : UIViewController <UIPickerViewDelegate>
+@interface editExerciseViewController : UIViewController <UIPickerViewDelegate>
 
 @property workout *editWorkout;
 @property (retain, nonatomic) NSMutableArray *minsArray;
